@@ -1,0 +1,130 @@
+<div style="height: 10px"></div>
+<ul class="valuechart">
+  <li *ngFor="let graph of graphValues; let i = index" [style.width]="graph.value + '%'" [style.backgroundColor]="materialColors[i]">
+    {{graph.title}} </li>
+</ul>
+<div style="height: 10px"></div>
+
+<div class="row" style="padding:5px;text-align: center">
+  <div class="col-md-1"></div>
+  <div *ngFor="let tile of tiles;" align="center" class="card-1 col-md-1" style="margin:5px;background-color:#E0E0E0;text-align: center;padding-top:10px;">
+    <p>{{tile.value}}</p>
+    <p>{{tile.title}}</p>
+
+  </div>  <div class="col-md-1"></div>
+
+</div>
+<div class="row">
+  <div class="col-md-6 example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <div class=" col-md-6" >
+    <button mat-raised-button  color="primary" style="float: right;">Add Associate</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
+</div>
+<div class="example-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="Status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-mini-fab></button>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Associate_Id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Associate Id </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.Associate_Id}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.Name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Mobile">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.Mobile}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.Email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="button-row">
+          <button mat-icon-button color="primary">
+            <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn">
+            <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+          </button>
+        </div>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+</div>
+<!-- 
+<p-table [value]="associates" [responsive]="true"  #dt>
+  <ng-template pTemplate="header">
+    <tr>
+      <th> Picture</th>
+      <th [pSortableColumn]="'Status'">Status
+        <p-sortIcon [field]="'Status'"></p-sortIcon>
+      </th>
+      <th [pSortableColumn]="'Name'">Name
+        <p-sortIcon [field]="'Name'"></p-sortIcon>
+      </th>
+      <th [pSortableColumn]="'Associate_Id'">Associate ID
+        <p-sortIcon [field]="'Associate_Id'"></p-sortIcon>
+      </th>
+      <th [pSortableColumn]="'Email'">Email
+        <p-sortIcon [field]="'Email'"></p-sortIcon>
+      </th>
+      <th [pSortableColumn]="'Phone'">Phone
+        <p-sortIcon [field]="'Phone'"></p-sortIcon>
+      </th>
+      <th>Skills</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>
+            <input pInputText type="text" (input)="dt.filter($event.target.value, 'Name', 'contains')">
+        </th>
+        <th>
+            <input pInputText type="text" (input)="dt.filter($event.target.value, 'Associate_Id', 'contains')">
+        </th>
+        <th>
+            <input pInputText type="text" (input)="dt.filter($event.target.value, 'Email', 'contains')">
+        </th>
+        <th>
+            <input pInputText type="text" (input)="dt.filter($event.target.value, 'Mobile', 'contains')">
+        </th>
+        
+        <th></th>
+        <th></th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-associate>
+    <tr>
+      <td></td>
+      <td>{{associate.Status}}</td>
+      <td>{{associate.Name}}</td>
+      <td>{{associate.Associate_Id}}</td>
+      <td>{{associate.Email}}</td>
+      <td>{{associate.Mobile}}</td>
+      <td>test,test</td>
+      <td>test,test</td>
+
+    </tr>
+  </ng-template>
+</p-table> -->

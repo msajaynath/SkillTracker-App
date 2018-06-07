@@ -1,0 +1,31 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+
+  .cutomTopPadding
+  {
+    margin-top: 20px;
+  }
+  .vcenter {
+    display: table-cell;
+vertical-align: middle;
+}
+
+.centerHor {
+  
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.imgRound {
+  border-radius: 50%;
+}
+.mat-button-toggle-checked
+{
+  background-color: #ff4081 !important;
+}

@@ -1,0 +1,132 @@
+<mat-card>
+  <!-- Title of an Card -->
+
+
+  <!-- Actual content starts from here -->
+  <mat-card-content>
+    <form [formGroup]="regiForm" (ngSubmit)="onFormSubmit(regiForm.value)">
+      <!-- <table>  
+                <tr>  
+                    <td>   -->
+      <div class="row">
+        <div class="col-md-12 example-container centerHor">
+        <img  class="imgRound" alt="Avatar" [src]="url"  style="width: 100px;height: 100px;" (click)="fileInput.click()" />    <input id="file-input" accept="image/*"  #fileInput style="display: none" type="file" (change)="onSelectFile($event)"/>
+        </div>
+      </div>
+      <div class="row cutomTopPadding">
+        <div class="col-md-4 example-container">
+          <mat-form-field>
+            <input formControlName="AssociateId" matInput placeholder="Associate Id">
+          </mat-form-field>
+          <mat-error>
+            <span *ngIf="!regiForm.get('AssociateId').valid && regiForm.get('AssociateId').touched">Please enter associate id !!!</span>
+          </mat-error>
+        </div>
+        <div class="col-md-4 example-container ">
+          <mat-form-field>
+            <input formControlName="Name" matInput placeholder="Associate Name">
+          </mat-form-field>
+          <mat-error>
+            <span *ngIf="!regiForm.get('Name').valid && regiForm.get('Name').touched">Please enter First Name !!!</span>
+          </mat-error>
+        </div>
+        <div class="col-md-4 example-container">
+          <mat-form-field>
+            <input formControlName="Email" matInput placeholder="Email">
+          </mat-form-field>
+          <mat-error>
+            <span *ngIf="!regiForm.get('Email').valid && regiForm.get('Email').touched">Please enter valid email !!!</span>
+          </mat-error>
+        </div>
+        <!-- <div class="col-md-1"></div> -->
+
+      </div>
+      <div class="row cutomTopPadding">
+
+        <div class="col-md-4 example-container ">
+          <mat-form-field>
+            <input formControlName="Phone" matInput placeholder="Phone">
+          </mat-form-field>
+          <mat-error>
+            <span *ngIf="!regiForm.get('Phone').valid && regiForm.get('Phone').touched">Please enter a mobile number!!!</span>
+          </mat-error>
+        </div>
+        <div class="col-md-4 example-container">
+          <mat-form-field>
+            <input formControlName="Strength" matInput placeholder="Strength">
+          </mat-form-field>
+
+        </div>
+        <div class="col-md-4 example-container ">
+          <mat-form-field>
+            <input formControlName="Weakness" matInput placeholder="Weakness">
+          </mat-form-field>
+
+        </div>
+      </div>
+      <div class="row cutomTopPadding">
+        <div class="col-md-4 example-container ">
+          <span>Gender</span>
+          <br>
+          <br>
+          <mat-radio-group formControlName="Gender">
+            <mat-radio-button value="Male">Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+          </mat-radio-group>
+          <mat-error>
+            <span *ngIf="!regiForm.get('Gender').valid && regiForm.get('Gender').touched">Please select any gender !!!</span>
+          </mat-error>
+        </div>
+        <div class="col-md-4  ">
+          <span>Status</span>
+          <br>
+          <br>
+          <mat-button-toggle-group formControlName="Status" name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="Blue">Blue</mat-button-toggle>
+            <mat-button-toggle value="Green">Green</mat-button-toggle>
+            <mat-button-toggle value="Red">Red</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <div class="col-md-4  ">
+          <span>Level</span>
+          <br>
+          <br>
+          <mat-button-toggle-group formControlName="Level"  name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="Level 1">Level 1</mat-button-toggle>
+            <mat-button-toggle value="Level 2">Level 2</mat-button-toggle>
+            <mat-button-toggle value="Level 3">Level 3</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+
+      <div class="row cutomTopPadding">
+        <div class="col-md-1 "></div>
+        <div class="col-md-10 ">
+          <div class="row itemsBlock">
+
+            <div *ngFor="let skill of skills;" class="col-md-4 col-sm-6 col-12">
+              <div class="row">
+                <div class="col-md-4 my-auto ">
+                  <span class="align-baseline">{{skill}}</span>
+                </div>
+
+                <div class="col-md-8 ">
+
+                  <mat-slider id="idddd" thumbLabel [displayWith]="formatLabel" tickInterval="1" min="0" max="20"></mat-slider>&nbsp;20
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-1 "></div>
+
+      </div>
+
+      <button mat-raised-button color="accent" [disabled]="!regiForm.valid">Submit</button>
+
+
+    </form>
+  </mat-card-content>
+</mat-card>
