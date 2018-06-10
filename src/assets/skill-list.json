@@ -1,0 +1,9 @@
+[
+    {"Id":1,"Skill_Name":"HTML5"},
+    {"Id":2,"Skill_Name":".net Core"},
+    {"Id":3,"Skill_Name":"CSS3"},
+    {"Id":4,"Skill_Name":"React JS"},
+    {"Id":5,"Skill_Name":"Angular JS"},
+    {"Id":6,"Skill_Name":"Python"},
+    {"Id":7,"Skill_Name":"Java"}
+]

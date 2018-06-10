@@ -1,3 +1,48 @@
-<p>
-  skill works!
-</p>
+<div class="row" style="height: 30px;"></div>
+<div class="row">
+  <div class="col-md-3 col-3 "></div>
+
+  <div class="col-md-6 col-6 example-container ">
+    <mat-form-field>
+      <input matInput [(ngModel)] ="newSkill" placeholder="Add Skill">
+    </mat-form-field>
+    
+  </div>
+  <div class="col-md-1 col-1"> <button (click)="addSkill()" [disabled]="newSkill.length===0"  mat-mini-fab color="primary" >
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button></div>
+</div>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6  example-header">
+    <div class="example-container mat-elevation-z8">
+
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="Skill_Name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Skill </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.Skill_Name}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <div class="button-row">
+              <button mat-icon-button color="primary">
+                <mat-icon (click)="openEditDialog(row)" aria-label="Example icon-button with a heart icon">edit</mat-icon>
+              </button>
+              <button (click)="delete(row.Id)"  mat-icon-button color="warn">
+                <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+              </button>
+            </div>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+
+    </div>
+  </div>
+</div>

@@ -1,20 +1,11 @@
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <a class="navbar-brand" href="#">Skill Tracker</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/home" >Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/skill" >Add Skill</a>
-        </li>
-       
-      </ul>
-    </div>  
-  </nav>
-  
+  <mat-toolbar color="primary">
+    <span>Skill Tracker</span>
+    <span class="example-spacer"></span>
+    
+    <button  type="button" value="Add Bulk Enquiry" routerLink="../home"  routerLinkActive="active-link" mat-button ><mat-icon>home</mat-icon> Home</button>
+
+    <button   type="button" value="Add Bulk Enquiry" routerLink="../skill" routerLinkActive="active-link" mat-button><mat-icon>add</mat-icon> Add skill</button>
+    </mat-toolbar>
+    
 <router-outlet></router-outlet>

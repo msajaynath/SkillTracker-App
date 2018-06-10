@@ -1,15 +1,7 @@
-.example-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .example-container > * {
-    width: 100%;
-  }
 
   .cutomTopPadding
   {
-    margin-top: 20px;
+    margin-top: 5px;
   }
   .vcenter {
     display: table-cell;
@@ -28,4 +20,22 @@ vertical-align: middle;
 .mat-button-toggle-checked
 {
   background-color: #ff4081 !important;
+}
+mat-card
+{
+  text-align: center;
+
+}
+
+.mat-divider
+{
+  border-top-color: rgb(192, 192, 192);
+}
+.inputHeader
+{
+  font-weight: bolder;
+}
+.example-card
+{
+  margin-top: 20px;
 }

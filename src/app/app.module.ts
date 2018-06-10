@@ -4,31 +4,36 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashBoardComponent } from './dash-board/dash-board.component';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';  
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkTableModule } from '@angular/cdk/table';
 
-import {  
-  MatButtonModule,  
-  MatMenuModule,  
-  MatToolbarModule,  
-  MatIconModule,  
-  MatCardModule,  
-  MatFormFieldModule,  
-  MatInputModule,  
-  MatDatepickerModule,  
-  MatDatepicker,  
-  MatNativeDateModule,  MatSortModule,
-  MatRadioModule,MatTableModule,
-  MatSelectModule,  MatSliderModule,
-  MatOptionModule, MatButtonToggleModule, 
-  MatSlideToggleModule,ErrorStateMatcher,ShowOnDirtyErrorStateMatcher,MatGridListModule
-} from '@angular/material'; import {RoundProgressModule} from 'angular-svg-round-progressbar';
-import {TableModule} from 'primeng/table';
+import {
+  MatButtonModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatDatepicker, MatDividerModule,MatDialogModule,
+  MatNativeDateModule, MatSortModule,
+  MatRadioModule, MatTableModule,MatSnackBarModule,
+  MatSelectModule, MatSliderModule,
+  MatOptionModule, MatButtonToggleModule,
+  MatSlideToggleModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatGridListModule, MatAutocomplete, MatAutocompleteModule
+} from '@angular/material'; import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { TableModule } from 'primeng/table';
 import { AssociateComponent } from './associate/associate.component';
-import { SkillComponent } from './skill/skill.component';
+import { SkillComponent, SkillEditDialog } from './skill/skill.component';
+import { SearchPipe } from './pipe/SearchPipe';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Interceptor } from './interceptor/Interceptor';
 
 const appRoutes: Routes = [
-  { path: '*', component: AssociateComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'associate', component: AssociateComponent },
+  { path: 'associate/:id', component: AssociateComponent },
   { path: 'home', component: DashBoardComponent },
   { path: 'skill', component: SkillComponent }
 ];
@@ -37,30 +42,36 @@ const appRoutes: Routes = [
     AppComponent,
     DashBoardComponent,
     AssociateComponent,
-    SkillComponent
+    SkillComponent, SearchPipe,SkillEditDialog
   ],
   imports: [
-    BrowserModule,  
-    FormsModule,  
-    ReactiveFormsModule,  
-    MatButtonModule,  
-    MatMenuModule,  
-    MatToolbarModule,  
-    MatIconModule,  
-    MatCardModule,  
-    BrowserAnimationsModule,  
-    MatFormFieldModule,  
-    MatInputModule,CdkTableModule,MatTableModule,
-    MatDatepickerModule,  
-    MatNativeDateModule,  
-    MatRadioModule,  MatSortModule,
-    MatSelectModule,  MatSliderModule,
-    MatOptionModule,  MatButtonToggleModule,
-    MatSlideToggleModule  ,MatGridListModule,
-    RouterModule.forRoot(appRoutes),TableModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule, HttpClientModule,
+    MatMenuModule, MatAutocompleteModule,
+    MatToolbarModule, MatDividerModule,
+    MatIconModule,
+    MatCardModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule, CdkTableModule, MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,MatDialogModule,
+    MatRadioModule, MatSortModule,
+    MatSelectModule, MatSliderModule,
+    MatOptionModule, MatButtonToggleModule,MatSnackBarModule,
+    MatSlideToggleModule, MatGridListModule,
+    RouterModule.forRoot(appRoutes), TableModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [SkillComponent, SkillEditDialog],
+  providers: [
+    , {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true
+    }],
+    bootstrap: [AppComponent]
 })
 
 export class AppModule { }
